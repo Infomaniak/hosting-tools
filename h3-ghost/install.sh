@@ -17,7 +17,15 @@ read -rp "SMTP username: " EMAIL_USER
 read -srp "SMTP password: " EMAIL_PASS && echo
 
 echo "=== Installation in progress, please wait... ==="
-cd "/srv/customer/sites/$SITE_DIR"
+
+cd "/srv/customer/sites/$SITE_DIR" || { echo "❌ Failed to change directory to /srv/customer/sites/$SITE_DIR. Exiting."; exit 1; }
+echo "⚠️ WARNING: This will delete all files in /srv/customer/sites/$SITE_DIR. Do you want to proceed? (yes/no)"
+read -r CONFIRM
+if [ "$CONFIRM" != "yes" ]; then
+  echo "❌ Operation canceled by the user. Exiting."
+  exit 1
+fi
+
 rm -rf ./*
 
 cd ~/
@@ -54,25 +62,25 @@ jq --arg user "$EMAIL_USER" \
    --arg pass "$EMAIL_PASS" \
    --arg from "$EMAIL_FROM" \
    '.mail = {
-      transport: "SMTP",
-      options: {
-        service: "Infomaniak",
-        host: "mail.infomaniak.com",
-        port: 465,
-        auth: {
-          user: $user,
-          pass: $pass
+      "transport": "SMTP",
+      "options": {
+        "service": "Infomaniak",
+        "host": "mail.infomaniak.com",
+        "port": 465,
+        "auth": {
+          "user": $user,
+          "pass": $pass
         }
       },
-      from: $from
+      "from": $from
     }' "$CONFIG_FILE" > "$CONFIG_FILE.tmp" && mv "$CONFIG_FILE.tmp" "$CONFIG_FILE"
 
 echo ""
 echo "✅ Configuration completed"
 
 echo ""
-echo "🛠️ Go to Infomaniak and configure:"
-echo "   ➤ Node.js command: /srv/customer/node_modules/ghost-cli/bin/ghost run"
+echo "🛠️ Go to your Infomaniak dashboard and configure:"
+echo "   ➤ Node.js command: ~/node_modules/ghost-cli/bin/ghost run"
 echo "   ➤ Click 'Start' to launch the application"
 echo ""
 echo "🌍 Access the admin: $SITE_URL/ghost"

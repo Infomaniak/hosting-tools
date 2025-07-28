@@ -32,6 +32,8 @@ Before installing Ghost, make sure you have these three things ready:
 
 ## 📥 Step-by-Step Installation
 
+Stop your Node.JS Application before doing the next steps !
+
 Now that everything is ready, let’s install Ghost!
 
 ### 🔗 Step 1: Connect to Your Hosting via SSH
@@ -62,60 +64,25 @@ You should now see a prompt like this:
 
 ✅ You're connected!
 
----
 
-### 📄 Step 2: Create and Paste the Installation Script
-
-We’ll now create a small script that installs Ghost for you.
+### 📄 Step 2: Clone and Run the installation script
 
 Run these commands one by one:
 
 ```bash
-touch install.sh
-nano install.sh
-```
-
-👉 This opens a text editor inside the terminal.
-
-Now:
-- **Copy** the full content from the [install.sh file on GitHub](./install.sh)
-- **Paste** the content by using `Ctrl+Shift+V`, or `cmd+V` on Mac
-
-Once pasted:
-- Press `CTRL + X` → to exit
-- Press `Y` → to save
-- Press `Enter` → to confirm
-
-✅ The script is now saved!
-
----
-
-### ▶️ Step 3: Run the Installation Script
-
-Give the script permission to run:
-
-```bash
-chmod +x install.sh
-```
-
-Then start it:
-
-```bash
-./install.sh
+git clone https://github.com/Infomaniak/hosting-tools.git
+cd hosting-tools/h3-ghost
+bash ./install.sh
 ```
 
 💡 The script will now:
 - Ask you some questions (like your site URL, database info, etc.)
 - Download and set up Ghost automatically
 - Take a few minutes — be patient!
-
 Answer the questions carefully using the database details you wrote down earlier.
-
 > 🛑 Don’t close the terminal until it finishes!
 
----
-
-### ⚙️ Step 4: Configure Your Hosting (via Infomaniak Panel)
+### ⚙️ Step 3: Configure Your Hosting (via Infomaniak Panel)
 
 Once the script is done, go to your **Infomaniak Control Panel**:
 
@@ -156,7 +123,7 @@ If something goes wrong:
 - Wait a few minutes after starting — it can take time to launch
 
 Still stuck?  
-👉 **Open an issue on GitHub** and we’ll help you out!
+👉 [Open an issue on GitHub](https://github.com/Infomaniak/hosting-tools/issues/new) and we’ll help you out!
 
 ---
 
