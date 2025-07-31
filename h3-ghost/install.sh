@@ -26,7 +26,7 @@ if [ "$CONFIRM" != "yes" ]; then
   exit 1
 fi
 
-rm -rf ./*
+rm -r ./*
 
 cd ~/
 npm install ghost-cli
