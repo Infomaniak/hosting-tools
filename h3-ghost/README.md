@@ -11,7 +11,8 @@ We’ll walk you through every step — no technical knowledge needed!
 Before installing Ghost, make sure you have these three things ready:
 
 1. **A Node.js Hosting plan from Infomaniak**  
-   🔗 [Learn more about Infomaniak Node.js Hosting](https://www.infomaniak.com/fr/hebergement/hebergement-nodejs)
+   - 🔗 [Learn more about Infomaniak Node.js Hosting](https://www.infomaniak.com/fr/hebergement/hebergement-nodejs)
+   - Requires Node.js 22.x (LTS)
 
 2. **SSH Access enabled**  
    This lets you connect to your server using a terminal.  
