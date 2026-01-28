@@ -28,7 +28,13 @@ Before installing Ghost, make sure you have these three things ready:
    - Username
    - Password
    - Host
-
+4. **Infomaniak SMTP Credentials**
+   Read [this FAQ](https://www.infomaniak.com/fr/support/faq/2427/synchroniser-les-e-mails-sur-tous-vos-appareils).  
+   You will need :
+   - SMTP User
+   - SMTP Password
+   - The mail you want to use
+   
 ---
 
 ## 📥 Step-by-Step Installation
