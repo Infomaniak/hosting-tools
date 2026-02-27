@@ -107,6 +107,50 @@ Once the script is done, go to your **Infomaniak Control Panel**:
 
 ---
 
+## 🔄 Updating Ghost
+
+To update Ghost CMS to the latest version or a specific version, follow these steps:
+
+### Step 1: Navigate to Your Ghost Installation
+
+First, navigate to your Ghost site directory:
+
+```bash
+cd
+cd sites/<ghost-site-name>
+```
+
+> Replace `<ghost-site-name>` with the actual name of your Ghost site folder (e.g., `blog`, `mysite`, etc.)
+
+### Step 2: Prepare Your Installation
+
+Make sure file permissions are correct:
+
+```bash
+find ./ -type d -exec chmod 00775 {} \;
+```
+
+### Step 3: Update Ghost
+
+**For standard updates** (to the latest version):
+```bash
+/srv/customer/node_modules/ghost-cli/bin/ghost update
+```
+
+**For specific version updates** (e.g., if you need to update to v5 before going to v6):
+```bash
+/srv/customer/node_modules/ghost-cli/bin/ghost update v5
+```
+
+> ℹ️ **Why update to v5 first?** If you're running Ghost v4 and need to go to v6, Ghost requires updating to v5 as an intermediate step. This is necessary for major Ghost version upgrades.
+
+### Before You Update
+
+Want to backup your data before updating? Follow the manual backup instructions here:
+🔗 https://docs.ghost.org/faq/manual-backup
+
+---
+
 ## 🎉 Done! Access Your Ghost Blog
 
 Open your browser and go to:
