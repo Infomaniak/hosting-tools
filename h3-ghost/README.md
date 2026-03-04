@@ -127,10 +127,15 @@ cd sites/<ghost-site-name>
 Make sure file permissions are correct:
 
 ```bash
-find ./ -type d -exec chmod 00775 {} \;
+find ./ -type d -exec chmod -v 00775 {} \;
 ```
 
 ### Step 3: Update Ghost
+
+**Check available ghost updates**
+```bash
+/srv/customer/node_modules/ghost-cli/bin/ghost check-update
+```
 
 **For standard updates** (to the latest version):
 ```bash
@@ -143,6 +148,8 @@ find ./ -type d -exec chmod 00775 {} \;
 ```
 
 > ℹ️ **Why update to v5 first?** If you're running Ghost v4 and need to go to v6, Ghost requires updating to v5 as an intermediate step. This is necessary for major Ghost version upgrades.
+
+**Restart your hosting on the infomaniak manager to apply update**
 
 ### Before You Update
 
