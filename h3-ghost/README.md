@@ -11,7 +11,8 @@ We’ll walk you through every step — no technical knowledge needed!
 Before installing Ghost, make sure you have these three things ready:
 
 1. **A Node.js Hosting plan from Infomaniak**  
-   🔗 [Learn more about Infomaniak Node.js Hosting](https://www.infomaniak.com/fr/hebergement/hebergement-nodejs)
+   - 🔗 [Learn more about Infomaniak Node.js Hosting](https://www.infomaniak.com/fr/hebergement/hebergement-nodejs)
+   - Requires Node.js 22.x (LTS)
 
 2. **SSH Access enabled**  
    This lets you connect to your server using a terminal.  
@@ -27,7 +28,13 @@ Before installing Ghost, make sure you have these three things ready:
    - Username
    - Password
    - Host
-
+4. **Infomaniak SMTP Credentials**
+   Read [this FAQ](https://www.infomaniak.com/fr/support/faq/2427/synchroniser-les-e-mails-sur-tous-vos-appareils).  
+   You will need :
+   - SMTP User
+   - SMTP Password
+   - The mail you want to use
+   
 ---
 
 ## 📥 Step-by-Step Installation
@@ -97,6 +104,57 @@ Once the script is done, go to your **Infomaniak Control Panel**:
    - 🔢 **Port**: `3000`
 4. Click **Save**
 5. Click **Start** (or restart if already running)
+
+---
+
+## 🔄 Updating Ghost
+
+To update Ghost CMS to the latest version or a specific version, follow these steps:
+
+### Step 1: Navigate to Your Ghost Installation
+
+First, navigate to your Ghost site directory:
+
+```bash
+cd
+cd sites/<ghost-site-name>
+```
+
+> Replace `<ghost-site-name>` with the actual name of your Ghost site folder (e.g., `blog`, `mysite`, etc.)
+
+### Step 2: Prepare Your Installation
+
+Make sure file permissions are correct:
+
+```bash
+find ./ -type d -exec chmod -v 00775 {} \;
+```
+
+### Step 3: Update Ghost
+
+**Check available ghost updates**
+```bash
+/srv/customer/node_modules/ghost-cli/bin/ghost check-update
+```
+
+**For standard updates** (to the latest version):
+```bash
+/srv/customer/node_modules/ghost-cli/bin/ghost update
+```
+
+**For specific version updates** (e.g., if you need to update to v5 before going to v6):
+```bash
+/srv/customer/node_modules/ghost-cli/bin/ghost update v5
+```
+
+> ℹ️ **Why update to v5 first?** If you're running Ghost v4 and need to go to v6, Ghost requires updating to v5 as an intermediate step. This is necessary for major Ghost version upgrades.
+
+**Restart your hosting on the infomaniak manager to apply update**
+
+### Before You Update
+
+Want to backup your data before updating? Follow the manual backup instructions here:
+🔗 https://docs.ghost.org/faq/manual-backup
 
 ---
 
